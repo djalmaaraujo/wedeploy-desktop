@@ -1,4 +1,4 @@
-# Wedeploy Desktop
+![Banner](https://raw.githubusercontent.com/djalmaaraujo/wedeploy-desktop/master/banner.png?token=AAANSpKWZNpFYgm5Fl86IyK7s5CjSxOtks5Z6oDnwA%3D%3D)
 
 Keep posted on all activites from your projects and services. Monitor your plan usage and access services logs super fast.
 
