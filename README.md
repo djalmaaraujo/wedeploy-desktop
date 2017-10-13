@@ -31,9 +31,8 @@ Check `./dist` folder for installers.
 
 ## Roadmap (mvp)
 
-1. [ ] Login
-
-- This will check for `~/.we` file and search for the auth token. If this is not found, will warn the user to login using the tool
+1. Login
+- [ ] Check for `~/.we` file and search for the auth token. If this is not found, will warn the user to login using the tool
 
 2. Activities
 - [ ] List all projects with their `health` status badges.
@@ -50,6 +49,10 @@ Check `./dist` folder for installers.
 - [ ] Alert user once a service is down
 - [ ] Alert user once a deploy succeeded
 - [ ] Alert user once a deploy failed
+
+6. Installers
+- [ ] macOs installer
+
 
 ## Authors
 
