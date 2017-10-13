@@ -35,18 +35,18 @@ Check `./dist` folder for installers.
 
 - This will check for `~/.we` file and search for the auth token. If this is not found, will warn the user to login using the tool
 
-2. [ ] Activities
-- This will list all projects with their `health` status badges.
+2. Activities
+- [ ] List all projects with their `health` status badges.
 
-3. [ ] Project Details
-- [ ] This will show the project activity
+3. Project Details
+- [ ] List project activity feed
 - [ ] Health status
 - [ ] List of services with their `health` badges
 
-4. [ ] Usage/Account
-- This will show some progress bars / status of the user usage.
+4. Usage/Account
+- [ ] Show some user stats using `account/usage` api
 
-5. [ ] Notifications
+5. Notifications
 - [ ] Alert user once a service is down
 - [ ] Alert user once a deploy succeeded
 - [ ] Alert user once a deploy failed
