@@ -29,6 +29,28 @@ yarn pack
 
 Check `./dist` folder for installers.
 
+## Roadmap (mvp)
+
+1. [ ] Login
+
+- This will check for `~/.we` file and search for the auth token. If this is not found, will warn the user to login using the tool
+
+2. [ ] Activities
+- This will list all projects with their `health` status badges.
+
+3. [ ] Project Details
+- [ ] This will show the project activity
+- [ ] Health status
+- [ ] List of services with their `health` badges
+
+4. [ ] Usage/Account
+- This will show some progress bars / status of the user usage.
+
+5. [ ] Notifications
+- [ ] Alert user once a service is down
+- [ ] Alert user once a deploy succeeded
+- [ ] Alert user once a deploy failed
+
 ## Authors
 
 - Djalma Araújo ([@djalmaaraujo](https://twitter.com/djalmaaraujo))
