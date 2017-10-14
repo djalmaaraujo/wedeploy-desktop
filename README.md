@@ -2,13 +2,12 @@
 
 Keep posted on all activites from your projects and services. Monitor your plan usage and access services logs super fast.
 
+**This is not an official application and it's basically a proof of concept.**
+
 ## Usage
 
 You can download the latest release [here](https://github.com/djalmaaraujo/wedeploy-desktop/releases).
 
-## This is alpha/beta what ever
-
-This is not an official application and it's basically a proof of concept. 
 
 ## Getting Started
 Simply clone down this reposity, install dependencies, and get started on your application.
