@@ -10,10 +10,30 @@ You can download the latest release [here](https://github.com/djalmaaraujo/wedep
 
 This is not an official application and it's basically a proof of concept. 
 
-## Setup
+## Getting Started
+Simply clone down this reposity, install dependencies, and get started on your application.
 
-1. Install the dependencies: `yarn install`
-2. Start the app: `yarn start`
+The use of the [yarn](https://yarnpkg.com/) package manager is **strongly** recommended, as opposed to using `npm`.
+
+```bash
+yarn install
+```
+
+### Development Scripts
+
+```bash
+# run application in development mode
+yarn dev
+
+# compile source code and create webpack output
+yarn compile
+
+# `yarn compile` & create build with electron-builder
+yarn dist
+
+# `yarn compile` & create unpacked build with electron-builder
+yarn dist:dir
+```
 
 ## Caught a bug?
 
