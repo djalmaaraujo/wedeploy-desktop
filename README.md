@@ -43,7 +43,7 @@ yarn dist:dir
 To make sure that your code works in the bundled application, you can generate the binaries like this:
 
 ```bash
-yarn pack
+yarn dist
 ```
 
 Check `./dist` folder for installers.
