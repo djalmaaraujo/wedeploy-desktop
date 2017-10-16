@@ -10,9 +10,9 @@ import Main from './components/main';
 const state = {};
 
 ipcRenderer.on('api:projects', function(event, projects) {
-	state.projects = projects;
+	state.projects = projects
 
-  renderAPP(state);
+  renderAPP(state)
 });
 
 const renderAPP = (state) => {
