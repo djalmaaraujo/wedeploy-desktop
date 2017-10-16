@@ -24,5 +24,31 @@
     "electron-webpack": "1.8.0",
     "webpack": "^3.6.0",
     "webpack-build-notifier": "^0.1.16"
+  },
+  "electronWebpack": {
+    "whiteListedModules": ["menubar"]
+  },
+
+  "build": {
+    "files": [
+      "static/**/*"
+    ],
+    "extraResources": [
+      {
+        "from": "static/**/*",
+        "to": "static"
+      }
+    ],
+    "mac": {
+      "asar": false
+    },
+
+    "linux": {
+      "asar": false
+    },
+
+    "win": {
+      "asar": false
+    }
   }
 }
