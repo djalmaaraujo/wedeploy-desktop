@@ -1,0 +1,24 @@
+{
+  "requireSpaceBeforeBlockStatements": true,
+  "requireSpaceAfterKeywords":  [
+    "do",
+    "for",
+    "if",
+    "else",
+    "switch",
+    "case",
+    "try",
+    "catch",
+    "void",
+    "while",
+    "with",
+    "return",
+    "typeof",
+  ],
+  "disallowSpaceAfterObjectKeys": true,
+  "requireSpaceBeforeObjectValues": true,
+  "requireSpaceAfterComma": true,
+  "disallowTabs": true,
+  "disallowTrailingWhitespace": true,
+  "validateQuoteMarks": { "mark": "'", "escape": true }
+}
