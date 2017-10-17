@@ -1,7 +1,5 @@
 // Electron
-const ipcRenderer = require('electron').ipcRenderer
-
-ipcRenderer.send('api:projects');
+import { ipcRenderer } from 'electron'
 
 // Need both React and ReactDOM for the JSX transpiler.
 import ReactDOM from 'react-dom';
