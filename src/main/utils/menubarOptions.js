@@ -10,5 +10,7 @@ export default {
   index: url,
   showDockIcon: true,
   icon: iconPath(isDevelopment),
-  alwaysOnTop: true
+  alwaysOnTop: true,
+  width: 400,
+  height: 370
 }

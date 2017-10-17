@@ -1,4 +1,4 @@
-import { app } from 'electron'
+import { app, ipcMain } from 'electron'
 import path from 'path'
 import fs from 'fs'
 import ini from 'ini'
@@ -21,13 +21,13 @@ const fetchAPI = (path, cb) => {
 
 const bindSocket = () => {
   return io.connect(
-    `${API_PATH}/subscribe/user/projects`, 
+    `${API_PATH}/subscribe/user/projects`,
     {
       query: querystring.stringify({
         accessToken: userToken
-      }), 
+      }),
       forceNew: false,
-      transports: [ 'websocket' ] 
+      transports: [ 'websocket' ]
     }
   )
 }
@@ -39,6 +39,10 @@ const fetchProjects = () => {
 const We = {
   watch(cb) {
     bindSocket().on('changes', (data) => {
+      fetchProjects().then(projects => cb(projects))
+    })
+
+    ipcMain.on('api:projects', () => {
       fetchProjects().then(projects => cb(projects))
     })
   },
