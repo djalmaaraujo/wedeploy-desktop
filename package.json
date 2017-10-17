@@ -1,6 +1,6 @@
 {
-  "name": "electron-webpack-quick-start",
-  "version": "0.0.0",
+  "name": "wedeploy-desktop",
+  "version": "0.0.1",
   "license": "MIT",
   "scripts": {
     "dev": "electron-webpack dev",
@@ -32,23 +32,6 @@
   "build": {
     "files": [
       "static/**/*"
-    ],
-    "extraResources": [
-      {
-        "from": "static/**/*",
-        "to": "static"
-      }
-    ],
-    "mac": {
-      "asar": false
-    },
-
-    "linux": {
-      "asar": false
-    },
-
-    "win": {
-      "asar": false
-    }
+    ]
   }
 }
