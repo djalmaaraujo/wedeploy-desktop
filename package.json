@@ -1,7 +1,15 @@
 {
   "name": "wedeploy-desktop",
+  "productName": "wedeploy-desktop",
+  "description": "Wedeploy.com Desktop Application",
+  "author": "Djalma Araujo <djalma.araujo@gmail.com>",
   "version": "0.0.1",
   "license": "MIT",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/djalmaaraujo/wedeploy-desktop.git"
+  },
   "scripts": {
     "dev": "electron-webpack dev",
     "compile": "electron-webpack",
@@ -31,7 +39,8 @@
 
   "build": {
     "files": [
-      "static/**/*"
+      "static/**/*",
+      "*.icns"
     ]
   }
 }
