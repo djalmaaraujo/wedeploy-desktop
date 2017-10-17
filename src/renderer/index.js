@@ -15,7 +15,6 @@ ipcRenderer.on('api:projects', function(event, projects) {
 })
 
 const renderAPP = (state) => {
-  console.log(state)
   ReactDOM.render(
     <Main state={state} />,
     document.getElementById('app')
