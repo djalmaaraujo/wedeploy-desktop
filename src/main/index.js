@@ -11,7 +11,7 @@ const mb = menubar(menubarOptions)
 mb.on('show', () => DevUtils.init(mb))
 
 // Realtime updates
-we.watch((projects) => updateUI(mb, projects))
+we.watch((data) => updateUI(mb, data))
 
 // Other Modules
 System.init(mb)

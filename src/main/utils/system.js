@@ -1,12 +1,11 @@
 import { ipcMain, shell } from 'electron'
-import { log } from 'util';
 
 const System = {
   init(mb) {
-    this.listenOpenURL(mb)
+    this.listenOpenURL()
   },
 
-  listenOpenURL(mb) {
+  listenOpenURL() {
     ipcMain.on('sys:openURL', (evt, url) => {
       shell.openExternal(url)
     })

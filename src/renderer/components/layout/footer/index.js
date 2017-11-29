@@ -17,7 +17,7 @@ export default class Footer extends React.Component {
     return (
       <footer className="footer">
         <div className="footer__row">{ statusText }</div>
-        <div className="footer__row footer__row--account"><AccountIcon /></div>
+        <div className="footer__row footer__row--account"><AccountIcon user={this.props.user} /></div>
       </footer>
     )
   }

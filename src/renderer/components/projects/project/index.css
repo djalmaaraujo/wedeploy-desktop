@@ -42,6 +42,7 @@
 }
 
 .project__statusText {
-  font-size: 10px;
+  font-size: 9px;
   margin-right: 20px;
+  color: rgba(0,0,0,0.7)
 }

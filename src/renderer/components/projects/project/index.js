@@ -1,6 +1,9 @@
 // Modules
 import React from 'react'
 
+// Components
+import Pill from '../../pill'
+
 // Style
 import './index.css'
 
@@ -12,7 +15,7 @@ export default class Project extends React.Component {
       <div className="project">
         <div className="project__column">
           <div className="project__name">
-            <span className={`status-${health}`}></span> { projectId }
+            <Pill name={health} /> { projectId }
           </div>
         </div>
 

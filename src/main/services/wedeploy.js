@@ -32,6 +32,10 @@ const bindSocket = () => {
   )
 }
 
+const user = {
+  username: weConfigFile['remote "wedeploy"'].username
+}
+
 const fetchProjects = () => {
   return fetchAPI('projects?order=desc&field=latestActivity').then(res => res.json())
 }
@@ -39,15 +43,13 @@ const fetchProjects = () => {
 const We = {
   watch(cb) {
     bindSocket().on('changes', (data) => {
-      fetchProjects().then(projects => cb(projects))
+      fetchProjects().then(projects => cb({ projects, user }))
     })
 
-    ipcMain.on('api:projects', () => {
-      fetchProjects().then(projects => cb(projects))
+    ipcMain.on('api:data', () => {
+      fetchProjects().then(projects => cb({projects, user}))
     })
-  },
-
-  fetchProjects: fetchProjects
+  }
 }
 
 export default We

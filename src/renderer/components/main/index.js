@@ -16,12 +16,12 @@ export default class Main extends React.Component {
       <div className="main">
         <Header />
         <ProjectList projects={ this.props.state.projects } />
-        <Footer status={'down'} />
+        <Footer status={'down'} user={this.props.state.user} />
       </div>
     )
   }
 
   componentDidMount() {
-    ipcRenderer.send('api:projects')
+    ipcRenderer.send('api:data')
   }
 }

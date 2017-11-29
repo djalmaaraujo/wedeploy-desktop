@@ -1,0 +1,28 @@
+.pill {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(14, 20, 26, 0.4);
+  display: inline-block;
+  text-indent: -20000px;
+  overflow: hidden;
+  margin-right: 10px;
+}
+
+.pill--zoom {
+  zoom: 1.5;
+}
+
+.pill--healthy,
+.pill--up {
+  background: #00d46a;
+}
+
+.pill--none {
+  background: rgba(14, 20, 26, 0.4);
+}
+
+.pill--unhealthy,
+.pill--down {
+  background: #ff4040;
+}
