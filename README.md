@@ -1,4 +1,4 @@
-![Banner](https://raw.githubusercontent.com/djalmaaraujo/wedeploy-desktop/master/banner.png)
+![Banner](banner.png?raw=true)
 
 Keep posted on all activites from your projects and services. Monitor your plan usage and access services logs super fast.
 
