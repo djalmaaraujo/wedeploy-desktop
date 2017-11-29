@@ -14,12 +14,21 @@
   border-bottom: none;
 }
 
-.project__row {
+.project__column {
   flex: 1;
 }
 
+.project__column:first-of-type {
+  width: 70%;
+}
+
 .project__name {
-  font-size: 14px;
+  font-size: 12px;
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 95%;
 }
 
 .project__statusText,

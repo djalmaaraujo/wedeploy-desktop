@@ -19,7 +19,7 @@ export default class Header extends React.Component {
   render() {
     return (
       <header className="header">
-        <div className="header__row">
+        <div className="header__column">
         <img
         src="wedeploy.png"
         alt="Wedeploy.com"
@@ -27,7 +27,7 @@ export default class Header extends React.Component {
         onClick={this.openConsole.bind(this)} />
         </div>
 
-        <div className="header__row">
+        <div className="header__column">
           <img
             src="settings.png"
             alt="Settings"

@@ -1,1 +1,5 @@
-.projectList {}
+.projectList {
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: calc(100vh - 100px);
+}

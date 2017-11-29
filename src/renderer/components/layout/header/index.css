@@ -6,11 +6,11 @@
   border-bottom: 1px solid #d9d8d8;
 }
 
-.header__row {
+.header__column {
     flex: 1
 }
 
-.header__row:nth-child(2) {
+.header__column:nth-child(2) {
   text-align: right;
 }
 

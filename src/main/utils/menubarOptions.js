@@ -13,5 +13,5 @@ export default {
   preloadWindow: true,
   alwaysOnTop: true,
   width: 330,
-  height: 280
+  height: 343
 }
