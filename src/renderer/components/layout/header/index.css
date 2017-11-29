@@ -1,0 +1,25 @@
+.header {
+  display: flex;
+  height: 50px;
+  line-height: 50px;
+  padding: 0 15px;
+  border-bottom: 1px solid #d9d8d8;
+}
+
+.header__row {
+    flex: 1
+}
+
+.header__row:nth-child(2) {
+  text-align: right;
+}
+
+.header__icon {
+  cursor: pointer;
+  width: 24px;
+  vertical-align: middle;
+}
+
+.header__icon--settings {
+  width: 16px
+}

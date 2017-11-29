@@ -10,7 +10,8 @@ export default {
   index: url,
   showDockIcon: true,
   icon: iconPath(isDevelopment),
+  preloadWindow: true,
   alwaysOnTop: true,
-  width: 400,
-  height: 370
+  width: 330,
+  height: 280
 }

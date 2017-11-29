@@ -6,6 +6,7 @@ import ReactDOM from 'react-dom'
 import React from 'react'
 import Main from './components/main'
 
+// Code
 const state = {}
 
 ipcRenderer.on('api:projects', function(event, projects) {
