@@ -12,6 +12,8 @@ import './index.css'
 
 export default class Main extends React.Component {
   render() {
+    if (!this.props.state) return null
+
     const {projects, user} = this.props.state
 
     return (
@@ -24,6 +26,8 @@ export default class Main extends React.Component {
   }
 
   componentDidMount() {
-    ipcRenderer.send('api:data')
+    setInterval(() => {
+      ipcRenderer.send('api:data')
+    }, 3000) // every 3s
   }
 }

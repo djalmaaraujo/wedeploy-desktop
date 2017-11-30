@@ -15,7 +15,7 @@ export default class ProjectList extends React.Component {
 
     return (
       <div className="projectList">
-        { !this.props.projects && <p>Loading your projects...</p> }
+        { !this.props.projects && <div className="projectList__loading">Loading your projects...</div> }
         { this.props.projects && this.props.projects.map(renderProject) }
       </div>
     )
