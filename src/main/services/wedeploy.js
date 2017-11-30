@@ -32,23 +32,20 @@ const bindSocket = () => {
   )
 }
 
-const user = {
-  username: weConfigFile['remote "wedeploy"'].username
-}
+const fetchProjects = () => fetchAPI('projects?order=desc&field=latestActivity').then(res => res.json())
+const fetchUser = () => fetchAPI('user').then(res => res.json())
 
-const fetchProjects = () => {
-  return fetchAPI('projects?order=desc&field=latestActivity').then(res => res.json())
+const grabData = (cb) => {
+  return Promise.all([fetchProjects(), fetchUser()]).then(([projects, user]) => cb({ projects, user }))
 }
 
 const We = {
   watch(cb) {
-    bindSocket().on('changes', (data) => {
-      fetchProjects().then(projects => cb({ projects, user }))
-    })
+    // Real time listener
+    bindSocket().on('changes', (data) => grabData(cb))
 
-    ipcMain.on('api:data', () => {
-      fetchProjects().then(projects => cb({projects, user}))
-    })
+    // Event Listener from UI
+    ipcMain.on('api:data', () => grabData(cb))
   }
 }
 

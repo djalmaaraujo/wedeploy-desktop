@@ -12,11 +12,13 @@ import './index.css'
 
 export default class Main extends React.Component {
   render() {
+    const {projects, user} = this.props.state
+
     return (
       <div className="main">
         <Header />
-        <ProjectList projects={ this.props.state.projects } />
-        <Footer status={'down'} user={this.props.state.user} />
+        <ProjectList projects={projects} />
+        <Footer projects={projects} user={user} />
       </div>
     )
   }
