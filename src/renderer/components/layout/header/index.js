@@ -4,8 +4,10 @@ import { ipcRenderer } from 'electron'
 // Render
 import React from 'react'
 
-// CSS
+// Style
 import './index.css'
+import ICON_WEDEPLOY from '../../../../../static/wedeploy.png'
+import ICON_SETTINGS from '../../../../../static/settings.png'
 
 export default class Header extends React.Component {
   openConsole() {
@@ -21,15 +23,15 @@ export default class Header extends React.Component {
       <header className="header">
         <div className="header__column">
         <img
-        src="wedeploy.png"
-        alt="Wedeploy.com"
-            className="header__icon"
-        onClick={this.openConsole.bind(this)} />
+          src={ICON_WEDEPLOY}
+          alt="Wedeploy.com"
+          className="header__icon"
+          onClick={this.openConsole.bind(this)} />
         </div>
 
         <div className="header__column">
           <img
-            src="settings.png"
+            src={ICON_SETTINGS}
             alt="Settings"
             className="header__icon header__icon--settings"
             onClick={this.openSettings.bind(this)} />
