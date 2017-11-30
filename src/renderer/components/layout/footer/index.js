@@ -22,8 +22,6 @@ export default class Footer extends React.Component {
   getStatus(projects) {
     if (!projects) return null;
 
-    console.log(projects)
-
     // true = up and running
     // false = something is wrong
     // we ignore 'none'
