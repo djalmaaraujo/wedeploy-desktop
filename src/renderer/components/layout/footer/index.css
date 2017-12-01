@@ -11,10 +11,14 @@
   font-weight: 300;
 }
 
-.footer__row {
+.footer__column {
   flex: 1;
 }
 
-.footer__row--account {
+.footer__column--status {
+  margin-top: 2px;
+}
+
+.footer__column--account {
   text-align: right;
 }

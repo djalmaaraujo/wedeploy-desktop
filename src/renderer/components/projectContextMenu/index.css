@@ -1,0 +1,25 @@
+.project__contextMenu {
+  background-color: rgba(14, 20, 26, 0.1);
+  border: none;
+  color: #7d7f81;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.project__contextMenu:hover {
+  opacity: 0.8
+}
+
+.project__contextMenu:after {
+  position: relative;
+  top: -4px;
+  content: "...";
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: -1px;
+}

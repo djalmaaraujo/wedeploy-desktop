@@ -40,5 +40,6 @@
 .project__statusText {
   font-size: 9px;
   margin-right: 20px;
-  color: rgba(0,0,0,0.7)
+  color: rgba(0,0,0,0.7);
+  text-transform: capitalize;
 }

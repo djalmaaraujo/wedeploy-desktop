@@ -3,6 +3,7 @@ import React from 'react'
 
 // Components
 import Pill from '../../pill'
+import ProjectContextMenu from '../../projectContextMenu'
 
 // Style
 import './index.css'
@@ -23,7 +24,7 @@ export default class Project extends React.Component {
           <div className="project__status">
             <span className="project__statusText">{ health }</span>
 
-            <button type="button">...</button>
+            <ProjectContextMenu project={this.props.data} />
           </div>
         </div>
       </div>

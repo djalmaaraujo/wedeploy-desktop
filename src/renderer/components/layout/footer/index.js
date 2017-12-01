@@ -33,10 +33,10 @@ export default class Footer extends React.Component {
   }
 
   getStatusText(status) {
-    if (status === HEALTH_STATUS.unhealthy) return 'something is wrong'
-    if (status === HEALTH_STATUS.healthy) return 'up and running'
+    if (status === HEALTH_STATUS.unhealthy) return 'Something is wrong'
+    if (status === HEALTH_STATUS.healthy) return 'All services online'
 
-    return 'connecting...'
+    return 'Connecting...'
   }
 
   render() {
@@ -45,8 +45,8 @@ export default class Footer extends React.Component {
 
     return (
       <footer className="footer">
-        <div className="footer__row"><Pill name={status} zoom={true} />{statusText}</div>
-        <div className="footer__row footer__row--account"><AccountIcon user={this.props.user} /></div>
+        <div className="footer__column footer__column--status"><Pill name={status} zoom={true} />{statusText}</div>
+        <div className="footer__column footer__column--account"><AccountIcon user={this.props.user} /></div>
       </footer>
     )
   }
