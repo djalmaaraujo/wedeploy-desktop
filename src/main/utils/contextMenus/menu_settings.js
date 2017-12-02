@@ -6,7 +6,7 @@ import We from '../../services/wedeploy'
 
 const getOpenAtLogin = () => app.getLoginItemSettings().openAtLogin
 
-export default [
+export default () => [
   {
     label: 'Preferences',
     submenu: [
