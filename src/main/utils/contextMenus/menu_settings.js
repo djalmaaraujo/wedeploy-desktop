@@ -3,6 +3,7 @@ import { shell, app } from 'electron'
 
 // Custom
 import We from '../../services/wedeploy'
+import Config from '../../services/config'
 
 const getOpenAtLogin = () => app.getLoginItemSettings().openAtLogin
 
@@ -23,7 +24,14 @@ export default () => [
         }
       },
       {
-        label: 'Allow Notifications'
+        label: 'Allow Notifications',
+        type: 'checkbox',
+        checked: Config.get('allowNotifications'),
+        click() {
+          const allowNotifications = Config.get('allowNotifications')
+
+          Config.set('allowNotifications', !allowNotifications)
+        }
       }
     ]
   },
