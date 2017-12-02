@@ -11,7 +11,7 @@ import ICON_SETTINGS from '../../../../../static/settings.png'
 
 export default class Header extends React.Component {
   openConsole() {
-    ipcRenderer.send('sys:openURL', 'https://console.wedeploy.com')
+    ipcRenderer.send('sys:openConsoleURL')
   }
 
   openSettings() {
