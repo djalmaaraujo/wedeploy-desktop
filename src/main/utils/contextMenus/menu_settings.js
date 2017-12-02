@@ -1,15 +1,26 @@
 // Electron
-import { shell } from 'electron'
+import { shell, app } from 'electron'
 
 // Custom
 import We from '../../services/wedeploy'
+
+const getOpenAtLogin = () => app.getLoginItemSettings().openAtLogin
 
 export default [
   {
     label: 'Preferences',
     submenu: [
       {
-        label: 'Open at Login'
+        label: 'Open at Login',
+        type: 'checkbox',
+        checked: getOpenAtLogin(),
+        click() {
+          const openAtLogin = getOpenAtLogin()
+
+          app.setLoginItemSettings({
+            openAtLogin: !openAtLogin
+          })
+        }
       },
       {
         label: 'Allow Notifications'
@@ -36,12 +47,11 @@ export default [
     }
   },
   {
-    label: 'About',
     role: 'about'
   },
   { type: 'separator' },
   {
-    label: 'Quit',
-    role: 'quit'
+    role: 'quit',
+    accelerator: 'Cmd+Q'
   }
 ]
