@@ -7,7 +7,7 @@ import Config from '../../services/config'
 
 const getOpenAtLogin = () => app.getLoginItemSettings().openAtLogin
 
-export default () => [
+export default (menubar) => [
   {
     label: 'Preferences',
     submenu: [
@@ -31,6 +31,18 @@ export default () => [
           const allowNotifications = Config.get('allowNotifications')
 
           Config.set('allowNotifications', !allowNotifications)
+        }
+      },
+      {
+        label: 'Always on Top',
+        type: 'checkbox',
+        checked: Config.get('alwaysOnTop'),
+        click() {
+          const alwaysOnTop = Config.get('alwaysOnTop')
+          const newStatus = !alwaysOnTop;
+
+          menubar.setOption('alwaysOnTop', newStatus)
+          Config.set('alwaysOnTop', newStatus)
         }
       }
     ]

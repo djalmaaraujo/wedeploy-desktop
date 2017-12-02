@@ -23,7 +23,7 @@ const System = {
 
   listenSettingsMenu(mb) {
     ipcMain.on(SYSTEM_EVENTS.toggleSettings, (evt, url) => {
-      const menu = Menu.buildFromTemplate(menuSettings())
+      const menu = Menu.buildFromTemplate(menuSettings(mb))
 
       menu.popup(mb.window)
     })

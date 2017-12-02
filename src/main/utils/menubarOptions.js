@@ -1,4 +1,5 @@
 import iconPath from './iconPath'
+import Config from '../services/config'
 
 const isDevelopment = process.env.NODE_ENV !== 'production'
 const url = isDevelopment
@@ -11,7 +12,7 @@ export default {
   showDockIcon: true,
   icon: iconPath(isDevelopment),
   preloadWindow: true,
-  alwaysOnTop: true,
+  alwaysOnTop: Config.get('alwaysOnTop'),
   width: 330,
   height: 343
 }
