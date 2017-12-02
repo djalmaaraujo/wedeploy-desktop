@@ -5,6 +5,8 @@ import { shell, app } from 'electron'
 import We from '../../services/wedeploy'
 import Config from '../../services/config'
 
+const URLS = Config.get('URLS')
+
 const getOpenAtLogin = () => app.getLoginItemSettings().openAtLogin
 
 export default (menubar) => [
@@ -39,7 +41,7 @@ export default (menubar) => [
         checked: Config.get('alwaysOnTop'),
         click() {
           const alwaysOnTop = Config.get('alwaysOnTop')
-          const newStatus = !alwaysOnTop;
+          const newStatus = !alwaysOnTop
 
           menubar.setOption('alwaysOnTop', newStatus)
           Config.set('alwaysOnTop', newStatus)
@@ -51,19 +53,19 @@ export default (menubar) => [
   {
     label: 'Open Console',
     click() {
-      shell.openExternal(We.defaults.urlConsole)
+      shell.openExternal(URLS.urlConsole)
     }
   },
   {
     label: 'Support',
     click() {
-      shell.openExternal(We.defaults.urlHelp)
+      shell.openExternal(URLS.urlHelp)
     }
   },
   {
     label: 'Documentation',
     click() {
-      shell.openExternal(We.defaults.urlDocs)
+      shell.openExternal(URLS.urlDocs)
     }
   },
   {

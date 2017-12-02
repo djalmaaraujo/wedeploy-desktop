@@ -8,13 +8,7 @@ import io from 'socket.io-client'
 import querystring from 'querystring'
 
 // Custom
-const defaults = {
-  url: 'https://www.wedeploy.com',
-  urlHelp: 'https://help.wedeploy.com/',
-  urlConsole: 'https://console.wedeploy.com',
-  urlDocs: 'https://wedeploy.com/docs/',
-  urlAccountUsage: 'https://console.wedeploy.com/account/usage'
-}
+import Config from './config'
 
 const weConfigFile = ini.parse(fs.readFileSync(`${app.getPath('home')}/.we`, 'utf8'))
 const userToken = weConfigFile['remote "wedeploy"'].token
@@ -57,9 +51,7 @@ const We = {
 
     // Event Listener from UI
     ipcMain.on('api:data', () => grabData(cb))
-  },
-
-  defaults
+  }
 }
 
 export default We

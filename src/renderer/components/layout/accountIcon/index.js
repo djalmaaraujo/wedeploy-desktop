@@ -16,7 +16,7 @@ export default class AccountIcon extends React.Component {
   }
 
   openAccountUsage() {
-    ipcRenderer.send('sys:openAccountUsageURL')
+    ipcRenderer.send('sys:openAccountUsageContextMenu')
   }
 
   render() {

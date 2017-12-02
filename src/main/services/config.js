@@ -1,56 +1,65 @@
-const Store = require('electron-store');
-const store = new Store();
+const Store = require('electron-store')
+const store = new Store()
 
 const HEALTH_STATUS = {
   unhealthy: 'unhealthy',
   none: 'none',
   healthy: 'healthy',
-};
+}
 
-const NOTIFICATION_TYPES = {};
+const URLS = {
+  url: 'https://www.wedeploy.com',
+  urlHelp: 'https://help.wedeploy.com/',
+  urlConsole: 'https://console.wedeploy.com',
+  urlDocs: 'https://wedeploy.com/docs/',
+  urlAccountUsage: 'https://console.wedeploy.com/account/usage',
+  urlProfile: 'https://console.wedeploy.com/account/profile',
+  urlBilling: 'https://console.wedeploy.com/account/billing',
+}
 
 const SETTINGS = {
   appName: "Wedeploy Desktop",
-  HEALTH_STATUS: HEALTH_STATUS,
-  allowNotifications: true
-};
+  allowNotifications: true,
+  HEALTH_STATUS,
+  URLS
+}
 
 class Settings {
   constructor(database) {
-    this.database = database;
+    this.database = database
   }
 
   get(setting) {
-    if (this.database.hasOwnProperty(setting) === true) {
-      return this.database[setting];
+    if (store.has(setting)) {
+      return store.get(setting)
     } else {
-      return store.get(setting);
+      if (this.database.hasOwnProperty(setting) === true) {
+        return this.database[setting]
+      }
+
+      return null
     }
   }
 
   set(setting, value) {
-    if (this.database.hasOwnProperty(setting) === true) {
-      this.database[setting] = value;
-    } else {
-      store.set(setting, value);
-    }
+    store.set(setting, value)
   }
 
   all() {
-    return store.store;
+    return store.store
   }
 
   has(setting) {
-    return store.has(setting);
+    return store.has(setting)
   }
 
   delete(setting) {
-    return store.delete(setting);
+    return store.delete(setting)
   }
 
   clear() {
-    return store.clear();
+    return store.clear()
   }
 }
 
-module.exports = new Settings(SETTINGS);
+module.exports = new Settings(SETTINGS)

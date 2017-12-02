@@ -3,21 +3,22 @@ import { ipcMain, shell, Menu } from 'electron'
 
 // Modules
 import menuSettings from './contextMenus/menu_settings'
-import We from '../services/wedeploy'
+import menuAccount from './contextMenus/menu_account'
+import Config from '../services/config'
 
 // All System Events Available
 const SYSTEM_EVENTS = {
   toggleSettings: 'sys:toggleSettings',
   openURL: 'sys:openURL',
   openConsoleURL: 'sys:openConsoleURL',
-  openAccountUsageURL: 'sys:openAccountUsageURL'
+  openAccountUsageContextMenu: 'sys:openAccountUsageContextMenu'
 }
 
 const System = {
   init(mb) {
     this.listenOpenURL()
     this.listenOpenConsoleURL()
-    this.listenOpenAccountUsageURL()
+    this.openAccountUsageContextMenu(mb)
     this.listenSettingsMenu(mb)
   },
 
@@ -34,11 +35,15 @@ const System = {
   },
 
   listenOpenConsoleURL() {
-    ipcMain.on(SYSTEM_EVENTS.openConsoleURL, (evt, url) => shell.openExternal(We.defaults.urlConsole))
+    ipcMain.on(SYSTEM_EVENTS.openConsoleURL, (evt, url) => shell.openExternal(Config.get('URLS').urlConsole))
   },
 
-  listenOpenAccountUsageURL() {
-    ipcMain.on(SYSTEM_EVENTS.openAccountUsageURL, (evt, url) => shell.openExternal(We.defaults.urlAccountUsage))
+  openAccountUsageContextMenu(mb) {
+    ipcMain.on(SYSTEM_EVENTS.openAccountUsageContextMenu, (evt, url) => {
+      const menu = Menu.buildFromTemplate(menuAccount(mb))
+
+      menu.popup(mb.window)
+    })
   }
 }
 
