@@ -24,7 +24,7 @@ export default class Project extends React.Component {
           <div className="project__status">
             <span className="project__statusText">{ health }</span>
 
-            <ProjectContextMenu project={this.props.data} />
+            <ProjectContextMenu projectId={this.props.data.projectId} />
           </div>
         </div>
       </div>

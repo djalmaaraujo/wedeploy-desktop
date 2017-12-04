@@ -7,6 +7,8 @@ const HEALTH_STATUS = {
   healthy: 'healthy',
 }
 
+const PLACEHOLDER_URL = '##PLACEHOLDER##'
+
 const URLS = {
   url: 'https://www.wedeploy.com',
   urlHelp: 'https://help.wedeploy.com/',
@@ -15,11 +17,15 @@ const URLS = {
   urlAccountUsage: 'https://console.wedeploy.com/account/usage',
   urlProfile: 'https://console.wedeploy.com/account/profile',
   urlBilling: 'https://console.wedeploy.com/account/billing',
+  urlProjectInstallService: `https://console.wedeploy.com/projects/${PLACEHOLDER_URL}/services/install`,
+  urlProjectCollaborators: `https://console.wedeploy.com/projects/${PLACEHOLDER_URL}/collaborators`,
+  urlProjectSettings: `https://console.wedeploy.com/projects/${PLACEHOLDER_URL}/settings`
 }
 
 const SETTINGS = {
   appName: "Wedeploy Desktop",
   allowNotifications: true,
+  PLACEHOLDER_URL,
   HEALTH_STATUS,
   URLS
 }
