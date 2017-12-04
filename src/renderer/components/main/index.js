@@ -14,13 +14,18 @@ export default class Main extends React.Component {
   render() {
     if (!this.props.state) return null
 
-    const {projects, user} = this.props.state
+    const {projects, user, accountUsage, usageDetails} = this.props.state
 
     return (
       <div className="main">
         <Header />
         <ProjectList projects={projects} />
-        <Footer projects={projects} user={user} />
+        <Footer
+          projects={projects}
+          user={user}
+          accountUsage={accountUsage}
+          usageDetails={usageDetails}
+        />
       </div>
     )
   }

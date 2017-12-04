@@ -39,8 +39,8 @@ const System = {
   },
 
   openAccountUsageContextMenu(mb) {
-    ipcMain.on(SYSTEM_EVENTS.openAccountUsageContextMenu, (evt, url) => {
-      const menu = Menu.buildFromTemplate(menuAccount(mb))
+    ipcMain.on(SYSTEM_EVENTS.openAccountUsageContextMenu, (evt, accountUsageData) => {
+      const menu = Menu.buildFromTemplate(menuAccount(mb, accountUsageData))
 
       menu.popup(mb.window)
     })

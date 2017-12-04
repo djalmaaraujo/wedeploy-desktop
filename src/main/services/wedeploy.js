@@ -38,9 +38,16 @@ const bindSocket = () => {
 
 const fetchProjects = () => fetchAPI('projects?order=desc&field=latestActivity').then(res => res.json())
 const fetchUser = () => fetchAPI('user').then(res => res.json())
+const fetchAccountUsage = () => fetchAPI('account/usage/top').then(res => res.json())
+const fetchAccountUsageDetails = () => fetchAPI('account/usage').then(res => res.json())
 
 const grabData = (cb) => {
-  return Promise.all([fetchProjects(), fetchUser()]).then(([projects, user]) => cb({ projects, user }))
+  return Promise.all([
+    fetchProjects(),
+    fetchUser(),
+    fetchAccountUsage(),
+    fetchAccountUsageDetails(),
+  ]).then(([projects, user, accountUsage, usageDetails]) => cb({ projects, user, accountUsage, usageDetails }))
 }
 
 const We = {

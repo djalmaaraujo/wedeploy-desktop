@@ -46,7 +46,13 @@ export default class Footer extends React.Component {
     return (
       <footer className="footer">
         <div className="footer__column footer__column--status"><Pill name={status} zoom={true} />{statusText}</div>
-        <div className="footer__column footer__column--account"><AccountIcon user={this.props.user} /></div>
+        <div className="footer__column footer__column--account">
+          <AccountIcon
+            accountUsage={this.props.accountUsage}
+            usageDetails={this.props.usageDetails}
+            user={this.props.user}
+          />
+        </div>
       </footer>
     )
   }
