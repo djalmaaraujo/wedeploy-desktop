@@ -47,7 +47,7 @@ const We = {
   watch(cb) {
     // Real time listener
     // Disabling realtime until wedeploy fixes health realtime issue
-    bindSocket().on('changes', (data) => grabData(cb))
+    // bindSocket().on('changes', (data) => grabData(cb))
 
     // Event Listener from UI
     ipcMain.on('api:data', () => grabData(cb))
