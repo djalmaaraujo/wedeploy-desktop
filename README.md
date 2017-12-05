@@ -72,6 +72,11 @@ Check `./dist` folder for installers.
 6. Installers
 - [ ] macOs installer
 
+## Screenshots
+
+![Ss1](ss/1.png?raw=true)
+![Ss2](ss/2.png?raw=true)
+![Ss3](ss/3.png?raw=true)
 
 ## Authors
 
