@@ -66,7 +66,9 @@ const grabData = (cb) => {
     fetchUser(),
     fetchAccountUsage(),
     fetchAccountUsageDetails(),
-  ]).then(([projects, user, accountUsage, usageDetails]) => cb({ projects, user, accountUsage, usageDetails, loggedIn: true }))
+  ])
+    .then(([projects, user, accountUsage, usageDetails]) => cb({ projects, user, accountUsage, usageDetails, loggedIn: true }))
+    .catch(() => cb({ offline: true, loggedIn: isLogged() }))
 }
 
 const We = {

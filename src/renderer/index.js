@@ -8,10 +8,12 @@ import Main from './components/main'
 
 // Code
 const state = {
-  loggedIn: true
+  loggedIn: true,
+  offline: false
 }
 
 ipcRenderer.on('api:data', function(event, data) {
+  state.offline = data.offline
   state.loggedIn = data.loggedIn
   state.projects = data.projects
   state.user = data.user
