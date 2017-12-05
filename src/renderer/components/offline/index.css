@@ -1,28 +1,28 @@
 .offline {
   text-align: center;
-  padding: 50px 40px;
+  padding: 30px 40px;
 }
 
 .offline__header {
   margin: 0;
   padding: 0;
-  font-family: 'Galano Grotesque';
   font-size: 22px;
-  color: rgba(14, 20, 26, 0.8);
-  font-weight: 700;
-  margin-bottom: 40px;
+  color: #0e141a;
+  font-weight: 900;
+  margin-bottom: 20px;
 }
 
 .offline__logo {
   width: 63px;
   padding: 0;
+  margin: 40px 0;
 }
 
 .offline__disclaimer {
   font-size: 12px;
   line-height: 16px;
-  color: rgba(8, 41, 71, 0.4);
-  font-weight: 600;
-  margin-top: 40px;
+  color: rgba(14, 20, 26, .8);
+  font-weight: 400;
+  margin: 15px 0;
   padding: 0;
 }

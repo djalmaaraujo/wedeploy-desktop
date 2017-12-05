@@ -8,7 +8,7 @@
   line-height: 50px;
   border-top: 1px solid #d9d8d8;
   font-size: 12px;
-  font-weight: 300;
+  font-weight: 100;
 }
 
 .footer__column {
@@ -17,6 +17,7 @@
 
 .footer__column--status {
   margin-top: 2px;
+  color: rgba(14, 20, 26, .8);
 }
 
 .footer__column--account {

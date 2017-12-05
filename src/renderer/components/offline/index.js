@@ -24,7 +24,7 @@ export default class Offline extends React.Component {
           className="offline__logo"
           alt="Wedeploy.com" />
 
-        <p className="offline__disclaimer">Oops! Looks like your internet is not working as expeceted. We'll keep trying to connect, don't worry.</p>
+        <p className="offline__disclaimer">Oops! Looks like your internet is not working as expected. We'll keep trying to connect, don't worry.</p>
       </div>
     )
   }
