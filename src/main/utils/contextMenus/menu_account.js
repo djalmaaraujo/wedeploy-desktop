@@ -60,9 +60,5 @@ export default (menubar, { accountUsage, usageDetails }) => {
     click() {
       shell.openExternal(URLS.urlBilling)
     }
-  },
-  { type: 'separator' },
-  {
-    label: 'Log Out'
   }
 ]}
