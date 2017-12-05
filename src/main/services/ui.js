@@ -16,18 +16,22 @@ const SYSTEM_EVENTS = {
   openProjectContextMenu: 'sys:openProjectContextMenu'
 }
 
+// Send Data to UI
+// This is the state of the UI, with all API information the app need
 export const UpdateUI = (mb, projects) => {
   if (!mb.window) return false
 
   mb.window.webContents.send('api:data', projects)
 }
 
+// UI Events Listener
+// UI sends events using ipcRender and main proccess listen here
 export const Events = {
   init(mb) {
     this.listenOpenURL()
     this.listenOpenConsoleURL()
-    this.openAccountUsageContextMenu(mb)
-    this.openProjectContextMenu(mb)
+    this.listenAccountUsageContextMenu(mb)
+    this.listenProjectContextMenu(mb)
     this.listenSettingsMenu(mb)
   },
 
@@ -47,7 +51,7 @@ export const Events = {
     ipcMain.on(SYSTEM_EVENTS.openConsoleURL, (evt, url) => shell.openExternal(Config.get('URLS').urlConsole))
   },
 
-  openAccountUsageContextMenu(mb) {
+  listenAccountUsageContextMenu(mb) {
     ipcMain.on(SYSTEM_EVENTS.openAccountUsageContextMenu, (evt, accountUsageData) => {
       const menu = Menu.buildFromTemplate(menuAccount(mb, accountUsageData))
 
@@ -55,7 +59,7 @@ export const Events = {
     })
   },
 
-  openProjectContextMenu(mb) {
+  listenProjectContextMenu(mb) {
     ipcMain.on(SYSTEM_EVENTS.openProjectContextMenu, (evt, projectId) => {
       const menu = Menu.buildFromTemplate(menuProject(mb, projectId))
 
