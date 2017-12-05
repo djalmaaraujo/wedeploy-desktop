@@ -13,6 +13,7 @@ export default {
   icon: iconPath(isDevelopment),
   preloadWindow: true,
   alwaysOnTop: Config.get('alwaysOnTop'),
+  // alwaysOnTop: true,
   width: 330,
   height: 343
 }

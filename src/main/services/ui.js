@@ -23,10 +23,10 @@ const openURL = (url) => shell.openExternal(url)
 
 // Send Data to UI
 // This is the state of the UI, with all API information the app need
-export const UpdateUI = (mb, projects) => {
+export const UpdateUI = (mb, data) => {
   if (!mb.window) return false
 
-  mb.window.webContents.send('api:data', projects)
+  mb.window.webContents.send('api:data', data)
 }
 
 // UI Events Listener

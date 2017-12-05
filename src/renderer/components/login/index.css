@@ -1,0 +1,46 @@
+.login {
+  text-align: center;
+  padding: 30px 40px;
+}
+
+.login__header {
+  margin: 0;
+  padding: 0;
+  font-family: 'Galano Grotesque';
+  font-size: 22px;
+  color: rgba(14, 20, 26, 0.8);
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.login__logo {
+  width: 63px;
+  padding: 0;
+  margin: 10px 0;
+}
+
+.login__disclaimer {
+  font-size: 12px;
+  line-height: 16px;
+  color: rgba(8, 41, 71, 0.4);
+  font-weight: 600;
+  margin: 15px 0;
+  padding: 0;
+}
+
+.login__button {
+  font-size: 12px;
+  background-color: #00d46a;
+  border: none;
+  font-family: "Galano", sans-serif;
+  font-weight: 700;
+  text-align: center;
+  border-radius: 4px;
+  padding: 0 24px;
+  margin: 15px 0;
+  transition: background 0.333s;
+  line-height: 48px;
+  color: white;
+  cursor: pointer;
+  vertical-align: middle;
+}

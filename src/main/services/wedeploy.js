@@ -10,9 +10,24 @@ import querystring from 'querystring'
 // Custom
 import Config from './config'
 
-const weConfigFile = ini.parse(fs.readFileSync(`${app.getPath('home')}/.we`, 'utf8'))
-const userToken = weConfigFile['remote "wedeploy"'].token
-const API_PATH = 'https://api.wedeploy.com'
+const userWeFilePath = `${app.getPath('home')}/.we`
+const API_PATH = Config.get('API_PATH')
+const loggedIn = false
+let weConfigFile;
+let userToken;
+
+const isLogged = () => {
+  if (fs.existsSync(userWeFilePath)) {
+    weConfigFile = ini.parse(fs.readFileSync(userWeFilePath, 'utf8'))
+    userToken = weConfigFile['remote "wedeploy"'].token
+
+    if (!userToken) return false
+
+    return true
+  }
+
+  return false
+}
 
 const fetchAPI = (path, cb) => {
   return fetch(`${API_PATH}/${path}`, {
@@ -42,12 +57,16 @@ const fetchAccountUsage = () => fetchAPI('account/usage/top').then(res => res.js
 const fetchAccountUsageDetails = () => fetchAPI('account/usage').then(res => res.json())
 
 const grabData = (cb) => {
+  if (!isLogged()) {
+    return cb({loggedIn: false})
+  }
+
   return Promise.all([
     fetchProjects(),
     fetchUser(),
     fetchAccountUsage(),
     fetchAccountUsageDetails(),
-  ]).then(([projects, user, accountUsage, usageDetails]) => cb({ projects, user, accountUsage, usageDetails }))
+  ]).then(([projects, user, accountUsage, usageDetails]) => cb({ projects, user, accountUsage, usageDetails, loggedIn: true }))
 }
 
 const We = {

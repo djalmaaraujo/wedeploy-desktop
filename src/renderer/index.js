@@ -7,9 +7,12 @@ import React from 'react'
 import Main from './components/main'
 
 // Code
-const state = {}
+const state = {
+  loggedIn: true
+}
 
 ipcRenderer.on('api:data', function(event, data) {
+  state.loggedIn = data.loggedIn
   state.projects = data.projects
   state.user = data.user
   state.accountUsage = data.accountUsage

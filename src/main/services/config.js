@@ -1,13 +1,13 @@
 const Store = require('electron-store')
 const store = new Store()
 
+const API_PATH = 'https://api.wedeploy.com'
+const PLACEHOLDER_URL = '##PLACEHOLDER##'
 const HEALTH_STATUS = {
   unhealthy: 'unhealthy',
   none: 'none',
   healthy: 'healthy',
 }
-
-const PLACEHOLDER_URL = '##PLACEHOLDER##'
 
 const URLS = {
   url: 'https://www.wedeploy.com',
@@ -25,6 +25,7 @@ const URLS = {
 const SETTINGS = {
   appName: "Wedeploy Desktop",
   allowNotifications: true,
+  API_PATH,
   PLACEHOLDER_URL,
   HEALTH_STATUS,
   URLS
