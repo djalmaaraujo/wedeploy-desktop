@@ -12,8 +12,8 @@ export default {
   showDockIcon: true,
   icon: iconPath(isDevelopment),
   preloadWindow: true,
-  alwaysOnTop: Config.get('alwaysOnTop'),
-  // alwaysOnTop: true,
-  width: 330,
+  // alwaysOnTop: Config.get('alwaysOnTop'),
+  alwaysOnTop: true,
+  width: 380,
   height: 343
 }
