@@ -8,13 +8,18 @@ import menuProject from '../utils/contextMenus/menu_project'
 import Config from './config'
 
 // All System Events Available
-const SYSTEM_EVENTS = {
-  toggleSettings: 'sys:toggleSettings',
+const OPEN_URL_EVENTS = {
   openURL: 'sys:openURL',
-  openConsoleURL: 'sys:openConsoleURL',
-  openAccountUsageContextMenu: 'sys:openAccountUsageContextMenu',
-  openProjectContextMenu: 'sys:openProjectContextMenu'
+  openConsoleURL: 'sys:openConsoleURL'
 }
+
+const CONTEXT_MENUS_EVENTS = {
+  'sys:toggleSettings': menuSettings,
+  'sys:openAccountUsageContextMenu': menuAccount,
+  'sys:openProjectContextMenu': menuProject
+};
+
+const openURL = (url) => shell.openExternal(url)
 
 // Send Data to UI
 // This is the state of the UI, with all API information the app need
@@ -30,41 +35,25 @@ export const Events = {
   init(mb) {
     this.listenOpenURL()
     this.listenOpenConsoleURL()
-    this.listenAccountUsageContextMenu(mb)
-    this.listenProjectContextMenu(mb)
-    this.listenSettingsMenu(mb)
+    this.bindContextMenuListeners(mb)
   },
 
-  listenSettingsMenu(mb) {
-    ipcMain.on(SYSTEM_EVENTS.toggleSettings, (evt, url) => {
-      const menu = Menu.buildFromTemplate(menuSettings(mb))
+  bindContextMenuListeners(mb) {
+    for (const eventName in CONTEXT_MENUS_EVENTS) {
+      ipcMain.on(eventName, (evt, data) => {
+        const menu = Menu.buildFromTemplate(CONTEXT_MENUS_EVENTS[eventName](mb, data))
 
-      menu.popup(mb.window)
-    })
+        menu.popup(mb.window)
+      })
+    }
   },
 
   listenOpenURL() {
-    ipcMain.on(SYSTEM_EVENTS.openURL, (evt, url) => shell.openExternal(url))
+    ipcMain.on(OPEN_URL_EVENTS.openURL, (evt, url) => openURL(url))
   },
 
   listenOpenConsoleURL() {
-    ipcMain.on(SYSTEM_EVENTS.openConsoleURL, (evt, url) => shell.openExternal(Config.get('URLS').urlConsole))
-  },
-
-  listenAccountUsageContextMenu(mb) {
-    ipcMain.on(SYSTEM_EVENTS.openAccountUsageContextMenu, (evt, accountUsageData) => {
-      const menu = Menu.buildFromTemplate(menuAccount(mb, accountUsageData))
-
-      menu.popup(mb.window)
-    })
-  },
-
-  listenProjectContextMenu(mb) {
-    ipcMain.on(SYSTEM_EVENTS.openProjectContextMenu, (evt, projectId) => {
-      const menu = Menu.buildFromTemplate(menuProject(mb, projectId))
-
-      menu.popup(mb.window)
-    })
+    ipcMain.on(OPEN_URL_EVENTS.openConsoleURL, (evt, url) => openURL(Config.get('URLS').urlConsole))
   }
 }
 
