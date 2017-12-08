@@ -30,8 +30,8 @@
   "devDependencies": {
     "babel-preset-react": "^6.24.1",
     "electron": "1.7.8",
-    "electron-builder": "^19.34.1",
-    "electron-webpack": "1.8.0",
+    "electron-builder": "19.48.3",
+    "electron-webpack": "1.11.0",
     "webpack": "^3.6.0",
     "webpack-build-notifier": "^0.1.16"
   },
