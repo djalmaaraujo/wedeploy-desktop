@@ -6,30 +6,33 @@ import ini from 'ini'
 import fetch from 'electron-fetch'
 import io from 'socket.io-client'
 import querystring from 'querystring'
-import notifier from 'node-notifier'
 
 // Custom
 import Config from './config'
+import ProjectNotification from './notification'
 
 const userWeFilePath = `${app.getPath('home')}/.we`
 const API_PATH = Config.get('API_PATH')
 const loggedIn = false
-const HEALTH_STATUS = Config.get('HEALTH_STATUS')
 
 let weConfigFile;
-let userToken;
+let userToken = null;
 
-const isLogged = () => {
-  if (fs.existsSync(userWeFilePath)) {
-    weConfigFile = ini.parse(fs.readFileSync(userWeFilePath, 'utf8'))
-    userToken = weConfigFile['remote "wedeploy"'].token
+const getToken = () => {
+  return new Promise((resolve, reject) => {
+    if (userToken !== null) return resolve(userToken)
 
-    if (!userToken) return false
+    if (fs.existsSync(userWeFilePath)) {
+      weConfigFile = ini.parse(fs.readFileSync(userWeFilePath, 'utf8'))
+      userToken = weConfigFile['remote "wedeploy"'].token
 
-    return true
-  }
+      if (!userToken) return reject(new Error('no token found on file'))
 
-  return false
+      return resolve(userToken)
+    }
+
+    return reject(new Error('we file not found'))
+  })
 }
 
 const fetchAPI = (path, cb) => {
@@ -54,32 +57,10 @@ const bindSocket = () => {
   )
 }
 
-const AnalyseHealth = (pJson) => {
-  pJson.then((projects) => {
-    const status = projects.reduce((acc, p) => {
-      if (acc === false || p.health === HEALTH_STATUS.unhealthy) return false
-
-      return true
-    }, true)
-
-    if (!status) {
-      notifier.notify({
-        title: 'Something is wrong',
-        message: 'You just got an unhealthy alert from your projects',
-        wait: true
-      })
-
-      notifier.on('click', function (notifierObject, options) {
-        shell.openExternal(Config.get('URLS').urlConsole)
-      })
-    }
-  })
-}
-
 const fetchProjects = () => fetchAPI('projects?order=desc&field=latestActivity').then(res => {
-  const json = res.json()
-  AnalyseHealth(json)
-  return json
+  const jsonPromise = res.json()
+  ProjectNotification(jsonPromise)
+  return jsonPromise
 })
 
 const fetchUser = () => fetchAPI('user').then(res => res.json())
@@ -87,10 +68,6 @@ const fetchAccountUsage = () => fetchAPI('account/usage/top').then(res => res.js
 const fetchAccountUsageDetails = () => fetchAPI('account/usage').then(res => res.json())
 
 const grabData = (cb) => {
-  if (!isLogged()) {
-    return cb({loggedIn: false})
-  }
-
   return Promise.all([
     fetchProjects(),
     fetchUser(),
@@ -98,17 +75,25 @@ const grabData = (cb) => {
     fetchAccountUsageDetails(),
   ])
     .then(([projects, user, accountUsage, usageDetails]) => cb({ projects, user, accountUsage, usageDetails, loggedIn: true }))
-    .catch(() => cb({ offline: true, loggedIn: isLogged() }))
+    .catch(() => cb({ offline: true, loggedIn: false }))
 }
 
 const We = {
   watch(cb) {
-    // Real time listener
-    // Disabling realtime until wedeploy fixes health realtime issue
-    // bindSocket().on('changes', (data) => grabData(cb))
+    getToken().then((token) => {
+      // Real time listener
+      const socker = bindSocket()
 
-    // Event Listener from UI
-    ipcMain.on('api:data', () => grabData(cb))
+      socker.on('changes', (data) => grabData(cb))
+      socker.on('connect', () => console.log('connected'))
+      socker.on('disconnect', () => console.log('connected'))
+
+      // Event Listener from UI
+      ipcMain.on('api:data', () => grabData(cb))
+    }).catch((reason) => {
+      console.log('Error: ', reason)
+      return cb({ loggedIn: false })
+    })
   }
 }
 

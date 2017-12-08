@@ -35,8 +35,8 @@ export default class Main extends React.Component {
   }
 
   componentDidMount() {
-    setInterval(() => {
-      ipcRenderer.send('api:data')
-    }, 3000) // every 3s
+    ipcRenderer.send('api:data')
+    // setInterval(() => {
+    // }, 500) // every 3s
   }
 }

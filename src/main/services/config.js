@@ -19,7 +19,8 @@ const URLS = {
   urlBilling: 'https://console.wedeploy.com/account/billing',
   urlProjectInstallService: `https://console.wedeploy.com/projects/${PLACEHOLDER_URL}/services/install`,
   urlProjectCollaborators: `https://console.wedeploy.com/projects/${PLACEHOLDER_URL}/collaborators`,
-  urlProjectSettings: `https://console.wedeploy.com/projects/${PLACEHOLDER_URL}/settings`
+  urlProjectSettings: `https://console.wedeploy.com/projects/${PLACEHOLDER_URL}/settings`,
+  urlProjectLogs: `https://console.wedeploy.com/projects/${PLACEHOLDER_URL}/logs`
 }
 
 const SETTINGS = {
