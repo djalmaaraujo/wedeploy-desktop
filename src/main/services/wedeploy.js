@@ -20,18 +20,16 @@ let userToken = null;
 
 const getToken = () => {
   return new Promise((resolve, reject) => {
-    if (userToken !== null) return resolve(userToken)
-
     if (fs.existsSync(userWeFilePath)) {
       weConfigFile = ini.parse(fs.readFileSync(userWeFilePath, 'utf8'))
       userToken = weConfigFile['remote "wedeploy"'].token
 
-      if (!userToken) return reject(new Error('no token found on file'))
+      if (!userToken) return reject('no token found on file')
 
       return resolve(userToken)
     }
 
-    return reject(new Error('we file not found'))
+    return reject('we file not found')
   })
 }
 
@@ -68,14 +66,19 @@ const fetchAccountUsage = () => fetchAPI('account/usage/top').then(res => res.js
 const fetchAccountUsageDetails = () => fetchAPI('account/usage').then(res => res.json())
 
 const grabData = (cb) => {
-  return Promise.all([
-    fetchProjects(),
-    fetchUser(),
-    fetchAccountUsage(),
-    fetchAccountUsageDetails(),
-  ])
-    .then(([projects, user, accountUsage, usageDetails]) => cb({ projects, user, accountUsage, usageDetails, loggedIn: true }))
-    .catch(() => cb({ offline: true, loggedIn: false }))
+  getToken().then(() => {
+    return Promise.all([
+      fetchProjects(),
+      fetchUser(),
+      fetchAccountUsage(),
+      fetchAccountUsageDetails(),
+    ])
+      .then(([projects, user, accountUsage, usageDetails]) => cb({ projects, user, accountUsage, usageDetails, loggedIn: true }))
+      .catch(() => cb({ offline: true }))
+  }).catch((reason) => {
+    console.log('Error: ', reason)
+    return cb({ loggedIn: false })
+  })
 }
 
 const We = {

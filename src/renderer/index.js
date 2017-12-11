@@ -8,8 +8,7 @@ import Main from './components/main'
 
 // Code
 const state = {
-  loggedIn: true,
-  offline: false
+  loggedIn: true
 }
 
 ipcRenderer.on('api:data', function(event, data) {

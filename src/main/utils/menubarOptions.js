@@ -9,7 +9,8 @@ const url = isDevelopment
 
 export default {
   index: url,
-  showDockIcon: false,
+  // showDockIcon: false,
+  showDockIcon: true,
   icon: iconPath(isDevelopment),
   preloadWindow: true,
   alwaysOnTop: Config.get('alwaysOnTop'),

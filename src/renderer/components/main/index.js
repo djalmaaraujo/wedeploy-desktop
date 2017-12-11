@@ -20,6 +20,7 @@ export default class Main extends React.Component {
 
     const {projects, user, accountUsage, usageDetails} = this.props.state
 
+
     return (
       <div className="main">
         <Header />
@@ -35,8 +36,8 @@ export default class Main extends React.Component {
   }
 
   componentDidMount() {
-    ipcRenderer.send('api:data')
-    // setInterval(() => {
-    // }, 500) // every 3s
+    setInterval(() => {
+      ipcRenderer.send('api:data')
+    }, 3000);
   }
 }
