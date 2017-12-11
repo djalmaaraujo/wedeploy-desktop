@@ -77,6 +77,7 @@ Check `./dist` folder for installers.
 ![Ss1](ss/1.png?raw=true)
 ![Ss2](ss/2.png?raw=true)
 ![Ss3](ss/3.png?raw=true)
+![Ss4](ss/4.png?raw=true)
 
 ## Authors
 
