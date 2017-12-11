@@ -14,7 +14,7 @@ const state = {
 ipcRenderer.on('api:data', function(event, data) {
   state.offline = data.offline
   state.loggedIn = data.loggedIn
-  state.projects = data.projects
+  state.projects = data.projects || []
   state.user = data.user
   state.accountUsage = data.accountUsage
   state.usageDetails = data.usageDetails

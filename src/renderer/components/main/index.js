@@ -20,7 +20,6 @@ export default class Main extends React.Component {
 
     const {projects, user, accountUsage, usageDetails} = this.props.state
 
-
     return (
       <div className="main">
         <Header />
