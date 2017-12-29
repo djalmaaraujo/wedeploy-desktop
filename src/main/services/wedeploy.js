@@ -61,9 +61,25 @@ const fetchProjects = () => fetchAPI('projects?order=desc&field=latestActivity')
   return jsonPromise
 })
 
+
 const fetchUser = () => fetchAPI('user').then(res => res.json())
 const fetchAccountUsage = () => fetchAPI('account/usage/top').then(res => res.json())
 const fetchAccountUsageDetails = () => fetchAPI('account/usage').then(res => res.json())
+
+const checkForErrorsInRequests = (valuesOrErrors) => {
+  const findErrors = valuesOrErrors.find((i) => i.hasOwnProperty('errors'))
+  const findUnautorized = valuesOrErrors.find((i) => (i.hasOwnProperty('status') && i.status === 401))
+
+  if (findUnautorized) {
+    throw new Error('unauthorized')
+  }
+
+  if (findErrors) {
+    throw new Error('Requests with errors')
+  }
+
+  return valuesOrErrors
+}
 
 const grabData = (cb) => {
   getToken().then(() => {
@@ -73,8 +89,9 @@ const grabData = (cb) => {
       fetchAccountUsage(),
       fetchAccountUsageDetails(),
     ])
+      .then((valuesOrErrors) => checkForErrorsInRequests(valuesOrErrors))
       .then(([projects, user, accountUsage, usageDetails]) => cb({ projects, user, accountUsage, usageDetails, loggedIn: true }))
-      .catch(() => cb({ offline: true }))
+      .catch((err) => cb({ offlineMessage: err.message, offline: true }))
   }).catch((reason) => {
     console.log('Error: ', reason)
     return cb({ loggedIn: false })
@@ -88,11 +105,11 @@ const We = {
 
     getToken().then((token) => {
       // Real time listener
-      const socker = bindSocket()
+      // const socker = bindSocket()
 
-      socker.on('changes', (data) => grabData(cb))
-      socker.on('connect', () => console.log('connected'))
-      socker.on('disconnect', () => console.log('connected'))
+      // socker.on('changes', (data) => grabData(cb))
+      // socker.on('connect', () => console.log('connected'))
+      // socker.on('disconnect', () => console.log('connected'))
     }).catch((reason) => {
       console.log('Error: ', reason)
       return cb({ loggedIn: false })
