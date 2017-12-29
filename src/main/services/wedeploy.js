@@ -105,11 +105,11 @@ const We = {
 
     getToken().then((token) => {
       // Real time listener
-      // const socker = bindSocket()
+      const socker = bindSocket()
 
-      // socker.on('changes', (data) => grabData(cb))
-      // socker.on('connect', () => console.log('connected'))
-      // socker.on('disconnect', () => console.log('connected'))
+      socker.on('changes', (data) => grabData(cb))
+      socker.on('connect', () => console.log('connected'))
+      socker.on('disconnect', () => console.log('connected'))
     }).catch((reason) => {
       console.log('Error: ', reason)
       return cb({ loggedIn: false })
