@@ -48,13 +48,13 @@ yarn dist
 
 Check `./dist` folder for installers.
 
-## Roadmap (mvp)
+## Roadmap (MVP / Future releases)
 
 1. Login
 - [x] Check for `~/.we` file and search for the auth token. If this is not found, will warn the user to login using the tool
 
-2. Activities
-- [ ] List all projects with their `health` status badges.
+2. Projects
+- [x] List all projects with their `health` status badges.
 
 3. Project Details
 - [ ] List project activity feed
@@ -66,8 +66,8 @@ Check `./dist` folder for installers.
 
 5. Notifications
 - [x] Alert user once a service is down
-- [ ] Alert user once a deploy succeeded
-- [ ] Alert user once a deploy failed
+- [ ] Alert user once a deploy succeeded (We need an API for this.. wedeploy?) :)
+- [ ] Alert user once a deploy failed (We need an API for this.. wedeploy?) :)
 
 6. Installers
 - [x] macOs installer
