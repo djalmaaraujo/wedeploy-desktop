@@ -83,6 +83,9 @@ const grabData = (cb) => {
 
 const We = {
   watch(cb) {
+    // Event Listener from UI
+    ipcMain.on('api:data', () => grabData(cb))
+
     getToken().then((token) => {
       // Real time listener
       const socker = bindSocket()
@@ -90,9 +93,6 @@ const We = {
       socker.on('changes', (data) => grabData(cb))
       socker.on('connect', () => console.log('connected'))
       socker.on('disconnect', () => console.log('connected'))
-
-      // Event Listener from UI
-      ipcMain.on('api:data', () => grabData(cb))
     }).catch((reason) => {
       console.log('Error: ', reason)
       return cb({ loggedIn: false })
