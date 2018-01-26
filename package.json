@@ -3,7 +3,7 @@
   "productName": "wedeploy-desktop",
   "description": "Wedeploy.com Desktop Application",
   "author": "Djalma Araujo <djalma.araujo@gmail.com>",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "private": true,
   "repository": {
