@@ -1,3 +1,5 @@
+# WEDEPLOY NO LONGER EXISTS. FEEL FREE TO USE THE APP AS ANOTHER DESKTOP APP.
+
 ![Banner](banner.png?raw=true)
 
 Keep posted on all activites from your projects and services. Monitor your plan usage and access services logs super fast.
